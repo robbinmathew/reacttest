@@ -12,7 +12,7 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Scratch</Link>
+              <Link to="/">Countries</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -22,8 +22,8 @@ class App extends Component {
             {/* Using LinkContainer instead of Link to prevent page
                 refreshes while redirecting
             */}
-            <LinkContainer to="/signup">
-              <NavItem>Signup</NavItem>
+            <LinkContainer to="/home">
+              <NavItem>Home</NavItem>
             </LinkContainer>
             <LinkContainer to="/login">
               <NavItem>Login</NavItem>
