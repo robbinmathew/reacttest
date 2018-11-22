@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Alert, Button, Glyphicon } from "react-bootstrap";
 
+import "./CountryTable.css";
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
