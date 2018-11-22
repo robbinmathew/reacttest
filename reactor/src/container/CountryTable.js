@@ -6,8 +6,9 @@ import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
 export default class CountryTable extends Component {
+    constructor(props) {
+        super(props);
 
-    render() {
         const countriesData = [{
                 name: 'USA',
                 capital: 'Washington DC',
@@ -22,12 +23,33 @@ export default class CountryTable extends Component {
                 numberOfStates: 31
             }];
 
+        this.state = {
+            countriesData: countriesData
+        };
+
+
+       this.handleClickPlus = this.handleClickPlus.bind(this);
+       this.handleClickMinus = this.handleClickMinus.bind(this);
+    }
+
+    handleClickMinus() {
+        console.info("Clicked minus");
+    }
+
+    handleClickPlus() {
+        console.info("Clicked plus");
+    }
+
+    render() {
         const columns = [{
                 id: 'Button',
                 Header: 'Button',
-                accessor: d => {return (<Button bsSize="small">
-                    <Glyphicon glyph="star"/>
-                    </Button>);} // Custom value accessors!
+                accessor: d => {return (
+                    <>
+                    <Button bsSize="small" onClick={this.handleClickPlus}> <Glyphicon glyph="plus"/> </Button>
+                    <Button bsSize="small" onClick={this.handleClickMinus}> <Glyphicon glyph="minus"/> </Button>
+                    </>
+                    );} // Custom value accessors!
             }, {
                 id: 'Alert',
                 Header: 'Alert',
@@ -45,7 +67,7 @@ export default class CountryTable extends Component {
 
         return (
                 <ReactTable
-                    data={countriesData}
+                    data={this.state.countriesData}
                     columns={columns}
                     className="-striped -highlight"
                 />);
