@@ -11,3 +11,7 @@ yarn add react-router-dom
 # Source: https://serverless-stack.com/chapters/adding-links-in-the-navbar.html
 # For preventing the full page to refresh
 yarn add react-router-bootstrap
+
+# Source: https://react-table.js.org/#/story/readme
+# For showing a table
+yarn add react-table
