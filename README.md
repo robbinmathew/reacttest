@@ -6,7 +6,8 @@ Uses:
 * react-bootstrap
 * react-table
 
-##Getting started:
+##Getting started
+
 Here are the steps to get started on Ubuntu 18.04
 
 1. Install yarn
