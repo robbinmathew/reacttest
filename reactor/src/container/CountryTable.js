@@ -32,24 +32,26 @@ export default class CountryTable extends Component {
        this.handleClickMinus = this.handleClickMinus.bind(this);
     }
 
-    handleClickMinus() {
-        console.info("Clicked minus");
+    handleClickMinus(e, row) {
+        console.info("Clicked minus: " + row.original.name);
     }
 
-    handleClickPlus() {
-        console.info("Clicked plus");
+    handleClickPlus(e, row) {
+        console.info("Clicked plus: " + row.original.name);
     }
 
     render() {
         const columns = [{
                 id: 'Button',
                 Header: 'Button',
-                accessor: d => {return (
+                accessor: d => ( 'ops' ),
+                Cell: row => (
+                    // The row refers to the cell row. row.original contains the data given to the row
                     <>
-                    <Button bsSize="small" onClick={this.handleClickPlus}> <Glyphicon glyph="plus"/> </Button>
-                    <Button bsSize="small" onClick={this.handleClickMinus}> <Glyphicon glyph="minus"/> </Button>
+                    <Button bsSize="small" onClick={(e) => this.handleClickPlus(e, row)}> <Glyphicon glyph="plus"/> </Button>
+                    <Button bsSize="small" onClick={(e) => this.handleClickMinus(e, row)}> <Glyphicon glyph="minus"/> </Button>
                     </>
-                    );} // Custom value accessors!
+                 )
             }, {
                 id: 'Alert',
                 Header: 'Alert',
