@@ -34,10 +34,13 @@ export default class CountryTable extends Component {
 
     handleClickMinus(e, row) {
         console.info("Clicked minus: " + row.original.name);
+        // The state info does not change the URL. How to udpate it??
+        this.props.history.push('/countrydetails', { from: 'minus', row: row.original })
     }
 
     handleClickPlus(e, row) {
         console.info("Clicked plus: " + row.original.name);
+        this.props.history.push('/countrydetails', { from: 'plus', row: row.original })
     }
 
     render() {
