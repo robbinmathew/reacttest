@@ -1,24 +1,39 @@
 import React, { Component } from "react";
+import { PageHeader, Well, Panel } from "react-bootstrap";
 
 export default class CountryDetails extends Component {
-    render() {
-        if(this.props.location.state === undefined) {
-            // This means that we can directly based of the URL, not redirected within react
-            // HOW TO UPDATE the URL?
-            this.props.history.push('/');
-            return (
-                <div className="CountryDetails">
-                    <h2>Redirecting...  </h2>
-                </div>
-                );
-        }
+    constructor(props) {
+        super(props);
 
+        this.showOptionalFrom = this.showOptionalFrom.bind(this);
+    }
+
+    showOptionalFrom() {
+        if(this.props.location.state !== undefined ) {
+            return (<Well>from: {this.props.location.state.from}</Well>)
+        }
+    }
+
+    render() {
         return (
         <div className="CountryDetails">
-            <h2>Country: {this.props.location.state.row.name}</h2>
-            <p>from: {this.props.location.state.from}</p>
-            <p>Capital: {this.props.location.state.row.capital}</p>
-            <p># of states: {this.props.location.state.row.numberOfStates}</p>
+            <PageHeader>
+                <h2>{this.props.match.params.name}</h2>
+            </PageHeader>
+
+            <Panel>
+                <Panel.Heading>
+                    <Panel.Title componentClass="h3">Capital</Panel.Title>
+                </Panel.Heading>
+                 <Panel.Body> {this.props.match.params.capital} </Panel.Body>
+            </Panel>
+            <Panel>
+                <Panel.Heading>
+                    <Panel.Title componentClass="h3">Number of states/provinces</Panel.Title>
+                </Panel.Heading>
+                 <Panel.Body> {this.props.match.params.ns} </Panel.Body>
+            </Panel>
+            {this.showOptionalFrom() }
         </div>
         );
     }

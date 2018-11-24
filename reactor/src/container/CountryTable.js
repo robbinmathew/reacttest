@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Alert, Button, Glyphicon } from "react-bootstrap";
 
-import "./CountryTable.css";
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
+
+import "./CountryTable.css";
 
 export default class CountryTable extends Component {
     constructor(props) {
@@ -32,15 +33,18 @@ export default class CountryTable extends Component {
        this.handleClickMinus = this.handleClickMinus.bind(this);
     }
 
-    handleClickMinus(e, row) {
-        console.info("Clicked minus: " + row.original.name);
+    handleClickMinus(e, countryRow) {
+        console.info("Clicked minus: " + countryRow.name);
         // The state info does not change the URL. How to udpate it??
-        this.props.history.push('/countrydetails', { from: 'minus', row: row.original })
+        this.props.history.push('/countrydetails/'+countryRow.name+'/'+countryRow.capital+'/'+countryRow.numberOfStates,
+            { from: 'minus'});
     }
 
-    handleClickPlus(e, row) {
-        console.info("Clicked plus: " + row.original.name);
-        this.props.history.push('/countrydetails', { from: 'plus', row: row.original })
+    handleClickPlus(e, countryRow) {
+        console.info("Clicked plus: " + countryRow.name);
+        // The state info does not change the URL. How to udpate it??
+        this.props.history.push('/countrydetails/'+countryRow.name+'/'+countryRow.capital+'/'+countryRow.numberOfStates,
+            { from: 'plus'});
     }
 
     render() {
@@ -51,8 +55,8 @@ export default class CountryTable extends Component {
                 Cell: row => (
                     // The row refers to the cell row. row.original contains the data given to the row
                     <>
-                    <Button bsSize="small" onClick={(e) => this.handleClickPlus(e, row)}> <Glyphicon glyph="plus"/> </Button>
-                    <Button bsSize="small" onClick={(e) => this.handleClickMinus(e, row)}> <Glyphicon glyph="minus"/> </Button>
+                    <Button bsSize="small" onClick={(e) => this.handleClickPlus(e, row.original)}> <Glyphicon glyph="plus"/> </Button>
+                    <Button bsSize="small" onClick={(e) => this.handleClickMinus(e, row.original)}> <Glyphicon glyph="minus"/> </Button>
                     </>
                  )
             }, {

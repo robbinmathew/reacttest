@@ -10,7 +10,7 @@ export default () =>
     <Route path="/home" exact component={Home} />
     <Route path="/" exact component={CountryTable} />
     <Route path="/countries" exact component={CountryTable} />
-    <Route path="/countrydetails" exact component={CountryDetails} />
+    <Route path="/countrydetails/:name/:capital/:ns" exact component={CountryDetails} />
     { /* Finally, catch all unmatched routes */ }
     <Route component={NotFound} />
   </Switch>;
