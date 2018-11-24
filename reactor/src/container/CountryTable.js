@@ -11,17 +11,33 @@ export default class CountryTable extends Component {
         super(props);
 
         const countriesData = [{
-                name: 'USA',
-                capital: 'Washington DC',
-                numberOfStates: 50
+                name: 'Australia',
+                capital: 'Canberra',
+                numberOfStates: 6
+            }, {
+                name: 'Brazil',
+                capital: 'Brasilia',
+                numberOfStates: 26
             }, {
                 name: 'Canada',
                 capital: 'Ottawa',
                 numberOfStates: 12
             }, {
+                name: 'Denmark',
+                capital: 'Copenhagen',
+                numberOfStates: 5
+            }, {
+                name: 'Egypt',
+                capital: 'Cairo',
+                numberOfStates: 27
+            }, {
                 name: 'Mexico',
                 capital: 'Mexico City',
                 numberOfStates: 31
+            }, {
+                name: 'USA',
+                capital: 'Washington DC',
+                numberOfStates: 50
             }];
 
         this.state = {
@@ -31,6 +47,7 @@ export default class CountryTable extends Component {
 
        this.handleClickPlus = this.handleClickPlus.bind(this);
        this.handleClickMinus = this.handleClickMinus.bind(this);
+       this.tableStringFieldFilter= this.tableStringFieldFilter.bind(this);
     }
 
     handleClickMinus(e, countryRow) {
@@ -47,10 +64,20 @@ export default class CountryTable extends Component {
             { from: 'plus'});
     }
 
+    tableStringFieldFilter(filter, row) {
+        console.info("Clicked tableStringFieldFilter: " + filter.value);
+        let field = String (row[filter.id].toLowerCase());
+
+        if (field.search(filter.value.toLowerCase()) < 0)
+            return false;
+        return true;
+    }
+
     render() {
         const columns = [{
                 id: 'Button',
                 Header: 'Button',
+                filterable: false,
                 accessor: d => ( 'ops' ),
                 Cell: row => (
                     // The row refers to the cell row. row.original contains the data given to the row
@@ -62,6 +89,7 @@ export default class CountryTable extends Component {
             }, {
                 id: 'Alert',
                 Header: 'Alert',
+                filterable: false,
                 accessor: d => {return (<Alert bsStyle="danger"> custom text</Alert>);} // Custom value accessors!
             }, {
                 Header: 'Name',
@@ -71,12 +99,15 @@ export default class CountryTable extends Component {
                 accessor: 'capital',
             }, {
                 Header: '# of States',
+                filterable: false,
                 accessor: 'numberOfStates',
             }];
 
         return (
                 <ReactTable
                     data={this.state.countriesData}
+                    filterable
+                    defaultFilterMethod={this.tableStringFieldFilter}
                     columns={columns}
                     className="-striped -highlight"
                 />);
