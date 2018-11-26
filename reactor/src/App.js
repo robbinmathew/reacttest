@@ -4,6 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import Routes from "./Routes";
 import "./App.css";
+import ReactorSideBar from "./container/ReactorSideBar";
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           </Nav>
         </Navbar.Collapse>
         </Navbar>
+        <ReactorSideBar/>
         <Routes />
       </div>
     );
