@@ -5,6 +5,7 @@ import { Card, CardImg, CardTitle, CardText, CardGroup,
 import { Container, Row, Col } from 'reactstrap';
 import { Media } from 'reactstrap';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap';
+import Routes from "./Routes";
 
 class ReactStrapTest extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ReactStrapTest extends Component {
           <Collapse isOpen={this.state.dropDownButtonOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/layout">Layout</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
@@ -63,7 +64,7 @@ class ReactStrapTest extends Component {
   renderMedia() {
     return (
       <Media list>
-        <Media tag="li">
+        <Media tag="li" className="bg-warning">
          <Media left href="#">
             <Media object src="media_64x64.png" alt="Generic placeholder image" />
           </Media>
@@ -72,7 +73,7 @@ class ReactStrapTest extends Component {
               Media heading
            </Media>
             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            <Media>
+            <Media className="bg-primary">
               <Media left href="#">
                 <Media object src="media_64x64.png" alt="Generic placeholder image" />
               </Media>
@@ -81,7 +82,7 @@ class ReactStrapTest extends Component {
                   Nested media heading
                 </Media>
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                <Media>
+                <Media className="bg-secondary">
                   <Media left href="#">
                     <Media object src="media_64x64.png" alt="Generic placeholder image" />
                  </Media>
@@ -94,7 +95,7 @@ class ReactStrapTest extends Component {
                 </Media>
               </Media>
            </Media>
-            <Media>
+            <Media className="bg-info">
               <Media left href="#">
                 <Media object src="media_64x64.png" alt="Generic placeholder image" />
               </Media>
@@ -107,7 +108,7 @@ class ReactStrapTest extends Component {
             </Media>
           </Media>
         </Media>
-       <Media tag="li">
+       <Media tag="li" className="bg-dark">
           <Media body>
             <Media heading>
               Media heading
@@ -158,7 +159,7 @@ class ReactStrapTest extends Component {
 
   renderContainerLayout() {
     return (
-      <Container fluid>
+      <Container fluid className="bg-success">
         <Row>
           <Col>.col</Col>
         </Row>
@@ -200,6 +201,7 @@ class ReactStrapTest extends Component {
     return (
       <div className="ReactStrapTest">
         { this.renderNavBar() }
+        <Routes />
         { this.renderCards() }
         { this.renderContainerLayout() }
         { this.renderMedia() }
