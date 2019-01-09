@@ -86,6 +86,8 @@ class ReactStrapMobileLayout extends Component {
       <Container fluid className="bg-light">
         {this.renderRow() }
         {this.renderRow() }
+        {this.renderRow() }
+        {this.renderRow() }
       </Container>
     );
   }
