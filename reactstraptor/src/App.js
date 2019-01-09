@@ -4,6 +4,8 @@ import ReactStrapTest from "./ReactStrapTest";
 import Routes from "./Routes";
 import {DropdownToggle, DropdownMenu, DropdownItem, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap';
 import { Jumbotron, Button } from 'reactstrap';
+import { InputGroup, Input, InputGroupAddon, InputGroupText} from 'reactstrap';
+import { Form, Row, Col, FormGroup, Label} from 'reactstrap';
 
 class App extends Component {
   constructor(props) {
@@ -26,8 +28,22 @@ class App extends Component {
       <div>
         <Navbar color={bgColor} light expand="md">
           <NavbarBrand href="/">reactstrap</NavbarBrand>
+
           <NavbarToggler onClick={this.dropDownButtonToggle} />
+
           <Collapse isOpen={this.state.dropDownButtonOpen} navbar>
+            {/* For the text input field and button*/}
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <InputGroup >
+                  <Input placeholder="Searc bar..." />
+                  <InputGroupAddon addonType="append">
+                    <Button color="success">To the Right!</Button>
+                  </InputGroupAddon>
+                </InputGroup>
+              </NavItem>
+            </Nav>
+
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/layout">Layout</NavLink>
