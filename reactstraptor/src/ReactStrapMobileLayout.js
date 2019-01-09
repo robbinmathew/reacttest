@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Card, CardImg, CardTitle, CardText, CardGroup, CardSubtitle, CardBody } from 'reactstrap';
 import {Button, Alert, Badge, ButtonGroup, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import { Media } from 'reactstrap';
+import { InputGroup, Input, InputGroupAddon, InputGroupText} from 'reactstrap';
 
 class ReactStrapMobileLayout extends Component {
   renderMedia( bgColorClass ) {
@@ -38,14 +39,55 @@ class ReactStrapMobileLayout extends Component {
           <CardTitle>March 35, 2122</CardTitle>
           <CardTitle>Mars</CardTitle>
 
-          <ButtonGroup>
-            <Button color="primary" >One</Button>
-            <Button color="primary" >Two</Button>
-            <Button color="primary" >Three</Button>
-          </ButtonGroup>
-          <Alert color="secondary"> Alert link <a href="#" className="alert-link">click here</a> 
+          <Alert color="secondary">
+            Alert link <a href="#" className="alert-link">click here</a> 
+            <br />
             <Badge color="info" pill>pill badge</Badge>
+
+            <br />
+            <ButtonGroup>
+              <Button color="primary" >One</Button>
+              <Button color="primary" >Two</Button>
+              <Button color="primary" >Three</Button>
+            </ButtonGroup>
           </Alert>
+
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <Input addon type="checkbox" aria-label="Checkbox for following text input" />
+              </InputGroupText>
+            </InputGroupAddon>
+            <Input placeholder="Check it out" />
+          </InputGroup>
+
+          <br />
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <Button>To the Left!</Button>
+            </InputGroupAddon>
+            <Input />
+          </InputGroup>
+
+          <br />
+          <InputGroup>
+            <InputGroupAddon addonType="append">
+              <Button color="success">To the right!</Button>
+            </InputGroupAddon>
+            <Input />
+          </InputGroup>
+
+          <br />
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <Button color="danger">To the Left!</Button>
+            </InputGroupAddon>
+            <Input placeholder="and..." />
+            <InputGroupAddon addonType="append">
+              <Button color="success">To the Right!</Button>
+            </InputGroupAddon>
+          </InputGroup>
+
         </CardBody>
         { this.renderMedia("bg-warning") }
         { this.renderMedia("bg-success") }
@@ -67,11 +109,13 @@ class ReactStrapMobileLayout extends Component {
         <Col xs="0" sm="0" md="1" lg="0" xl="1">
         </Col>
         <Col xs="12" sm="12" md="10" lg="7" xl="6">
-        <CardGroup>
-          { this.renderCard() }
-        </CardGroup>
+          <br />
+          <CardGroup>
+            { this.renderCard() }
+          </CardGroup>
         </Col>
         <Col xs="0" sm="0" md="0" lg="4" xl="4">
+          <br />
           { this.renderMedia("bg-danger") }
           { this.renderMedia("bg-dark") }
         </Col>
