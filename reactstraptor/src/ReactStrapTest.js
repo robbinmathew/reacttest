@@ -5,7 +5,6 @@ import { Card, CardImg, CardTitle, CardText, CardGroup,
 import { Container, Row, Col } from 'reactstrap';
 import { Media } from 'reactstrap';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap';
-import Routes from "./Routes";
 
 class ReactStrapTest extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ class ReactStrapTest extends Component {
                 <NavLink href="/layout">Layout</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="/mobilelayout">mobileLayout</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -200,8 +199,6 @@ class ReactStrapTest extends Component {
   render() {
     return (
       <div className="ReactStrapTest">
-        { this.renderNavBar() }
-        <Routes />
         { this.renderCards() }
         { this.renderContainerLayout() }
         { this.renderMedia() }
